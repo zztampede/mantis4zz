@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo download config file
+      - cd config/ && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
+  build:
+    commands:
+      - echo Run tests
+      - cd ../tests 
+      - php ./AllTests.php
+  post_build:
+    commands:
+      - echo Build completed on `date`
+#  artifacts:
+#  files:
