@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - echo download config file
-      - cd ./config/ && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
+      - mkdir config && cd ./config/ && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
   build:
     commands:
       - echo Run tests
