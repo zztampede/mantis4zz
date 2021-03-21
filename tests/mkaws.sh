@@ -26,7 +26,8 @@ DB_USER='root'
 DB_PASSWORD=''
 DB_CMD='mysql -e'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
-$DB_CMD "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';"
+$DB_CMD "CREATE USER 'root'@'localhost' IDENTIFIED BY '';"
+$DB_CMD "GRANT ALL PRIVILEGES ON bugtracker.* TO 'root'@'localhost';"
 $DB_CMD "$SQL_CREATE_DB"
 php -S $HOSTNAME:$PORT >& /dev/null &
 sleep 20
