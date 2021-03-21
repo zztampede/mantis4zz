@@ -7,7 +7,7 @@ MANTIS_BOOTSTRAP=tests/bootstrap.php
 MANTIS_CONFIG=config/config_inc.php
 
 TIMESTAMP=$(date "+%s")
-DB_CMD='mysql -e $db_server_addr'
+DB_CMD='mysql -h $db_server_addr -u root -p zzmantis -e $db_server_addr'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
 SQL_CREATE_PROJECT="INSERT INTO mantis_project_table
 	(name, inherit_global, description)
@@ -25,7 +25,7 @@ SQL_CREATE_TAGS="INSERT INTO mantis_tag_table
 	(0, 'modern-ui', '', $TIMESTAMP, $TIMESTAMP),
 	(0, 'patch', '', $TIMESTAMP, $TIMESTAMP);"
 
-$DB_CMD "$SQL_CREATE_PROJECT" $DB_CMD_SCHEMA -h $db_server_addr
+$DB_CMD "$SQL_CREATE_PROJECT" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_VERSIONS" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_TAGS" $DB_CMD_SCHEMA
 	
