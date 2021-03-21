@@ -9,8 +9,7 @@ phases:
   pre_build:
     commands:
       - service mysql start
-      - pwd
-      - ls -l
+      - mkdir ./config
       - /bin/bash ./tests/mkaws.sh
   build:
     commands:
