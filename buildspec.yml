@@ -10,6 +10,7 @@ phases:
     commands:
       - echo Run tests
       - cd ../ 
+      - pwd
       - ./vendor/bin/phpunit --bootstrap ./tests/bootstrap.php ./tests/AllTests.php
   post_build:
     commands:
