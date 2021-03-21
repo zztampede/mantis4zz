@@ -1,4 +1,4 @@
-HOSTNAME=localhost
+HOSTNAME=127.0.0.1
 PORT=8080
 MANTIS_DB_NAME=bugtracker
 MANTIS_BOOTSTRAP=tests/bootstrap.php
@@ -22,12 +22,12 @@ SQL_CREATE_TAGS="INSERT INTO mantis_tag_table
 	(0, 'modern-ui', '', $TIMESTAMP, $TIMESTAMP),
 	(0, 'patch', '', $TIMESTAMP, $TIMESTAMP);"
 DB_TYPE='mysqli'
-DB_USER='root'
+DB_USER='admin'
 DB_PASSWORD=''
 DB_CMD='mysql -e'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
-#$DB_CMD "CREATE USER 'root'@'localhost' IDENTIFIED BY '';"
-#$DB_CMD "GRANT ALL PRIVILEGES ON bugtracker.* TO 'root'@'localhost';"
+#$DB_CMD "CREATE USER 'admin'@'$HOSTNAME' IDENTIFIED BY '';"
+#$DB_CMD "GRANT ALL PRIVILEGES ON bugtracker.* TO 'admin'@'$HOSTNAME';"
 $DB_CMD "$SQL_CREATE_DB"
 php -S $HOSTNAME:$PORT >& /dev/null &
 sleep 20
