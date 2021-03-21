@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - apt-get update -y
-      - apt-get isntall mysql-server -y
+      - apt-get install mysql-server -y
       - composer install
   pre_build:
     commands:
