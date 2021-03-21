@@ -1,14 +1,10 @@
-mkdir config && cd ./config/ && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
-
-cd ../
-
+HOSTNAME=localhost
 MANTIS_DB_NAME=bugtracker
 MANTIS_BOOTSTRAP=tests/bootstrap.php
 MANTIS_CONFIG=config/config_inc.php
 
 TIMESTAMP=$(date "+%s")
-DB_CMD='mysql -h $db_server_addr -u root -p zzmantis -e'
-DB_CMD_SCHEMA="$MANTIS_DB_NAME"
+SQL_CREATE_DB="CREATE DATABASE $MANTIS_DB_NAME;"
 SQL_CREATE_PROJECT="INSERT INTO mantis_project_table
 	(name, inherit_global, description)
 	VALUES
@@ -24,14 +20,42 @@ SQL_CREATE_TAGS="INSERT INTO mantis_tag_table
 	VALUES
 	(0, 'modern-ui', '', $TIMESTAMP, $TIMESTAMP),
 	(0, 'patch', '', $TIMESTAMP, $TIMESTAMP);"
+DB_TYPE='mysqli'
+DB_USER='root'
+DB_PASSWORD=''
+DB_CMD='mysql -e'
+DB_CMD_SCHEMA="$MANTIS_DB_NAME"
+#-------------------------------------------------
+declare -A query=(
+	[install]=2
+	[db_type]=$DB_TYPE
+	[hostname]=$HOSTNAME
+	[database_name]=$MANTIS_DB_NAME
+	[db_username]=$DB_USER
+	[db_password]=$DB_PASSWORD
+	[admin_username]=$DB_USER
+	[admin_password]=$DB_PASSWORD
+	[timezone]=UTC
+)
+unset query_string
+for param in "${!query[@]}"
+do
+	value=${query[$param]}
+	query_string="${query_string}&${param}=${value}"
+done
 
+curl --data "${query_string:1}" http://$HOSTNAME:$PORT/admin/install.php
+#-------------------------------------------------
+$DB_CMD "$SQL_CREATE_DB"
 $DB_CMD "$SQL_CREATE_PROJECT" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_VERSIONS" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_TAGS" $DB_CMD_SCHEMA
 	
 
 php -S $HOSTNAME:$PORT >& /dev/null &
+chmod 777 config
 
+sleep 10
 TOKEN=$(php ./tests/travis_create_api_token.php)
 
 cat <<-EOF >> ./tests/bootstrap.php
@@ -43,3 +67,16 @@ cat <<-EOF >> ./tests/bootstrap.php
 		\$GLOBALS['MANTIS_TESTSUITE_API_TOKEN'] = '$TOKEN';
 	EOF
 
+
+sudo chmod 777 $MANTIS_CONFIG
+cat <<-EOF >> $MANTIS_CONFIG
+	# Configs required to ensure all PHPUnit tests are executed
+	\$g_allow_no_category = ON;
+	\$g_due_date_update_threshold = DEVELOPER;
+	\$g_due_date_view_threshold = DEVELOPER;
+	\$g_enable_product_build = ON;
+	\$g_enable_project_documentation = ON;
+	\$g_time_tracking_enabled = ON;
+	EOF
+
+echo script done and out
