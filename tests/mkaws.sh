@@ -1,4 +1,4 @@
-
+php -S $HOSTNAME:$PORT >& /dev/null &
 
 TOKEN=$(php ./tests/travis_create_api_token.php)
 

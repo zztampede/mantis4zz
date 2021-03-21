@@ -5,13 +5,12 @@ phases:
     commands:
       - php -i | grep -i soap
       - composer install
-      - /bin/bash ./tests/mkaws.sh
       - mkdir config && cd ./config/ && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
+      - /bin/bash ./tests/mkaws.sh
   build:
     commands:
       - echo Run tests
       - cd ../ 
-      - pwd
       - ./vendor/bin/phpunit --bootstrap ./tests/bootstrap.php ./tests/AllTests.php
   post_build:
     commands:
