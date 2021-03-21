@@ -26,6 +26,7 @@ DB_USER='root'
 DB_PASSWORD=''
 DB_CMD='mysql -e'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
+$DB_CMD "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';"
 $DB_CMD "$SQL_CREATE_DB"
 php -S $HOSTNAME:$PORT >& /dev/null &
 sleep 20
@@ -37,8 +38,8 @@ declare -A query=(
 	[database_name]=$MANTIS_DB_NAME
 	[db_username]=$DB_USER
 	[db_password]=$DB_PASSWORD
-	[admin_username]=$DB_USER
-	[admin_password]=$DB_PASSWORD
+	[admin_username]=admin
+	[admin_password]=password
 	[timezone]=UTC
 )
 unset query_string
