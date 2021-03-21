@@ -7,8 +7,7 @@ phases:
       - apt-get install mariadb-client mariadb-server -y
   pre_build:
     commands:
-      - systemctl status mariadb
-
+      - service mariad start
       - /bin/bash ./tests/mkaws.sh
       - composer install
   build:
