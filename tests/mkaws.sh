@@ -1,4 +1,4 @@
-HOSTNAME=127.0.0.1
+HOSTNAME='127.0.0.1'
 PORT=8080
 MANTIS_DB_NAME=bugtracker
 MANTIS_BOOTSTRAP=tests/bootstrap.php
