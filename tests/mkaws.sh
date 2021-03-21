@@ -1,4 +1,4 @@
-!/bin/bash
+
 
 TOKEN=$(php ./tests/travis_create_api_token.php)
 
