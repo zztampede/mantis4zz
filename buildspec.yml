@@ -19,8 +19,8 @@ phases:
       - ./build/buildrelease.py ./artifacts ./
   post_build:
     commands:
-      - cd ./artifacts
-      - ls -l
+      - mv ./artifacts/*.zip ./artifacts/final.zip
       - echo Build completed
-#  artifacts:
-#  files:
+  artifacts:
+    files:
+      - /artifacts/final.zip
