@@ -3,8 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | /bin/bash
-      - apt-get -y install mariadb-server
+      - apt-get update -y
+      - apt-get isntall mysql-server -y
       - composer install
   pre_build:
     commands:
