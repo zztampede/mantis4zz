@@ -1,5 +1,4 @@
 # Config files
-config/
 mantis_offline.php
 
 # Docbook builds
@@ -46,7 +45,6 @@ library/securimage
 api/rest/swagger
 
 # Composer
-/vendor/
 composer.phar
 
 # Settings below are for convenience when switching branches on Dev machines

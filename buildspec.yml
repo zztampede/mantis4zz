@@ -10,6 +10,7 @@ phases:
     commands:
       - service mysql start
       - pwd
+      - ls -l
       - /bin/bash ./tests/mkaws.sh
   build:
     commands:
