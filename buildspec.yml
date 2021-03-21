@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     commands: 
-      - apt-get install mariadb
+      - apt-get install mariadb-client
   pre_build:
     commands:
       - php -i | grep -i soap
