@@ -1,4 +1,4 @@
-HOSTNAME=localhost
+HOSTNAME=127.0.0.1
 MANTIS_DB_NAME=bugtracker
 MANTIS_BOOTSTRAP=tests/bootstrap.php
 MANTIS_CONFIG=config/config_inc.php
