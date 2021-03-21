@@ -27,7 +27,7 @@ DB_CMD='mysql -e'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
 
 php -S $HOSTNAME:80 >& /dev/null &
-
+sleep 20
 #-------------------------------------------------
 declare -A query=(
 	[install]=2
