@@ -39,8 +39,8 @@ declare -A query=(
 	[database_name]=$MANTIS_DB_NAME
 	[db_username]=$DB_USER
 	[db_password]=$DB_PASSWORD
-	[admin_username]=admin
-	[admin_password]=password
+	[admin_username]=$DB_USER
+	[admin_password]=$DB_PASSWORD
 	[timezone]=UTC
 )
 unset query_string
