@@ -2,7 +2,8 @@ version: 0.2
 
 phases:
   install:
-    commands: 
+    commands:
+      - curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | /bin/bash
       - apt-get install mariadb-client
   pre_build:
     commands:
