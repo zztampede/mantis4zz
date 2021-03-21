@@ -7,7 +7,7 @@ MANTIS_BOOTSTRAP=tests/bootstrap.php
 MANTIS_CONFIG=config/config_inc.php
 
 TIMESTAMP=$(date "+%s")
-DB_CMD='mysql -h $db_server_addr -u root -p zzmantis -e $db_server_addr'
+DB_CMD='mysql -h $db_server_addr -u root -p zzmantis -e'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
 SQL_CREATE_PROJECT="INSERT INTO mantis_project_table
 	(name, inherit_global, description)
