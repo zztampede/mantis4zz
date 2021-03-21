@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     commands: 
-      - apt-get install mysql
+      - apt-get install mariadb
   pre_build:
     commands:
       - php -i | grep -i soap
