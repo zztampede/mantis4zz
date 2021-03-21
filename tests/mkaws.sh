@@ -2,7 +2,7 @@
 
 TOKEN=$(php ./tests/travis_create_api_token.php)
 
-cat <<-EOF >> $MANTIS_BOOTSTRAP
+cat <<-EOF >> ./tests/bootstrap.php
 	<?php
 		\$GLOBALS['MANTIS_TESTSUITE_SOAP_ENABLED'] = true;
 		\$GLOBALS['MANTIS_TESTSUITE_SOAP_HOST'] = 'http://$HOSTNAME:$PORT/api/soap/mantisconnect.php?wsdl';
