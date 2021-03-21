@@ -1,6 +1,9 @@
 version: 0.2
 
 phases:
+  install:
+    commands: 
+      - apt-get install mysql
   pre_build:
     commands:
       - php -i | grep -i soap
