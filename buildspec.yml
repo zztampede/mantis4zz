@@ -3,13 +3,12 @@ version: 0.2
 phases:
   install:
     commands:
-      - curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | /bin/bash
-      - apt-get install mariadb-client mariadb-server -y
+      - apt-get -y mysql-client mysql-server
+      - composer install
   pre_build:
     commands:
       - service mariadb start
       - /bin/bash ./tests/mkaws.sh
-      - composer install
   build:
     commands:
       - echo Run tests 
