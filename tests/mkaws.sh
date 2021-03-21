@@ -25,8 +25,8 @@ DB_USER='root'
 DB_PASSWORD=''
 DB_CMD='mysql -e'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
-
-php -S $HOSTNAME:80 >& /dev/null &
+$DB_CMD "$SQL_CREATE_DB"
+php -S $HOSTNAME:$PORT >& /dev/null &
 sleep 20
 #-------------------------------------------------
 declare -A query=(
@@ -47,9 +47,8 @@ do
 	query_string="${query_string}&${param}=${value}"
 done
 
-curl --data "${query_string:1}" http://$HOSTNAME:80/admin/install.php
+curl --data "${query_string:1}" http://$HOSTNAME:$PORT/admin/install.php
 #-------------------------------------------------
-$DB_CMD "$SQL_CREATE_DB"
 #echo CREATING TABLES
 #$DB_CMD "CREATE TABLE mantis_project_table();" $DB_CMD_SCHEMA
 #$DB_CMD "CREATE TABLE mantis_project_version_table();" $DB_CMD_SCHEMA
