@@ -4,15 +4,7 @@ phases:
   pre_build:
     commands:
       - composer install
-      - TOKEN=$(php ./tests/travis_create_api_token.php)
-      - cat <<-EOF >> ./tests/bootstrap.php
-	<?php
-		\$GLOBALS['MANTIS_TESTSUITE_SOAP_ENABLED'] = true;
-		\$GLOBALS['MANTIS_TESTSUITE_SOAP_HOST'] = 'http://$HOSTNAME:$PORT/api/soap/mantisconnect.php?wsdl';
-		\$GLOBALS['MANTIS_TESTSUITE_REST_ENABLED'] = true;
-		\$GLOBALS['MANTIS_TESTSUITE_REST_HOST'] = 'http://$HOSTNAME:$PORT/api/rest/';
-		\$GLOBALS['MANTIS_TESTSUITE_API_TOKEN'] = '$TOKEN';
-	EOF
+      - ./tests/mkaws.sh
       - mkdir config && cd ./config/ && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
   build:
     commands:
