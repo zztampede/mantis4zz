@@ -9,7 +9,7 @@ phases:
       - composer install
   pre_build:
     commands:
-      - service mysql start
+      - service mariadb start
       - /bin/bash ./tests/mkaws.sh
   build:
     commands:
