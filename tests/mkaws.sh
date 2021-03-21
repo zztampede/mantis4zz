@@ -25,6 +25,9 @@ DB_USER='root'
 DB_PASSWORD=''
 DB_CMD='mysql -e'
 DB_CMD_SCHEMA="$MANTIS_DB_NAME"
+
+php -S $HOSTNAME:$PORT >& /dev/null &
+
 #-------------------------------------------------
 declare -A query=(
 	[install]=2
@@ -56,8 +59,6 @@ $DB_CMD "$SQL_CREATE_PROJECT" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_VERSIONS" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_TAGS" $DB_CMD_SCHEMA
 	
-
-php -S $HOSTNAME:$PORT >& /dev/null &
 chmod 777 config
 
 sleep 10
