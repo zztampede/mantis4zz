@@ -6,8 +6,6 @@ phases:
       - php -i | grep -i soap
       - composer install
       - /bin/bash ./tests/mkaws.sh
-      - mkdir config && cd ./config/ && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
-      - cd ../
   build:
     commands:
       - echo Run tests 
