@@ -29,6 +29,7 @@ DB_CMD_SCHEMA="$MANTIS_DB_NAME"
 $DB_CMD "CREATE USER 'admin'@'$HOSTNAME' IDENTIFIED BY '';"
 $DB_CMD "GRANT ALL PRIVILEGES ON bugtracker.* TO 'admin'@'$HOSTNAME';"
 $DB_CMD "$SQL_CREATE_DB"
+chmod 777 ./config
 php -S $HOSTNAME:$PORT >& /dev/null &
 sleep 20
 #-------------------------------------------------
@@ -61,8 +62,6 @@ $DB_CMD "$SQL_CREATE_PROJECT" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_VERSIONS" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_TAGS" $DB_CMD_SCHEMA
 	
-chmod 777 config
-
 sleep 10
 TOKEN=$(php ./tests/travis_create_api_token.php)
 
