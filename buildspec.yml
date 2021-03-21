@@ -15,7 +15,8 @@ phases:
     commands:
       - echo Run tests 
       - ./vendor/bin/phpunit --bootstrap ./tests/bootstrap.php ./tests/AllTests.php
-      - ./build/buildrelease.py
+      - mkdir artifacts
+      - ./build/buildrelease.py ./ ./artifacts/
   post_build:
     commands:
       - echo Build completed
