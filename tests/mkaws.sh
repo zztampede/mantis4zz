@@ -47,11 +47,11 @@ done
 curl --data "${query_string:1}" http://$HOSTNAME:$PORT/admin/install.php
 #-------------------------------------------------
 $DB_CMD "$SQL_CREATE_DB"
-echo CREATING TABLES
-$DB_CMD "CREATE TABLE mantis_project_table();" $DB_CMD_SCHEMA
-$DB_CMD "CREATE TABLE mantis_project_version_table();" $DB_CMD_SCHEMA
-$DB_CMD "CREATE TABLE mantis_tag_table();" $DB_CMD_SCHEMA
-echo TABLES CREATED
+#echo CREATING TABLES
+#$DB_CMD "CREATE TABLE mantis_project_table();" $DB_CMD_SCHEMA
+#$DB_CMD "CREATE TABLE mantis_project_version_table();" $DB_CMD_SCHEMA
+#$DB_CMD "CREATE TABLE mantis_tag_table();" $DB_CMD_SCHEMA
+#echo TABLES CREATED
 $DB_CMD "$SQL_CREATE_PROJECT" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_VERSIONS" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_TAGS" $DB_CMD_SCHEMA
@@ -73,7 +73,7 @@ cat <<-EOF >> ./tests/bootstrap.php
 	EOF
 
 
-sudo chmod 777 $MANTIS_CONFIG
+chmod 777 $MANTIS_CONFIG
 cat <<-EOF >> $MANTIS_CONFIG
 	# Configs required to ensure all PHPUnit tests are executed
 	\$g_allow_no_category = ON;
