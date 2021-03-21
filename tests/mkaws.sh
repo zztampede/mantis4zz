@@ -47,11 +47,11 @@ done
 curl --data "${query_string:1}" http://$HOSTNAME:$PORT/admin/install.php
 #-------------------------------------------------
 $DB_CMD "$SQL_CREATE_DB"
-#echo CREATING TABLES
-#$DB_CMD "CREATE TABLE mantis_project_table(id INT)" $DB_CMD_SCHEMA
-#$DB_CMD "CREATE TABLE mantis_project_version_table(id INT)" $DB_CMD_SCHEMA
-#$DB_CMD "CREATE TABLE mantis_tag_table(id INT)" $DB_CMD_SCHEMA
-#echo TABLES CREATED
+echo CREATING TABLES
+$DB_CMD "CREATE TABLE mantis_project_table();" $DB_CMD_SCHEMA
+$DB_CMD "CREATE TABLE mantis_project_version_table();" $DB_CMD_SCHEMA
+$DB_CMD "CREATE TABLE mantis_tag_table();" $DB_CMD_SCHEMA
+echo TABLES CREATED
 $DB_CMD "$SQL_CREATE_PROJECT" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_VERSIONS" $DB_CMD_SCHEMA
 $DB_CMD "$SQL_CREATE_TAGS" $DB_CMD_SCHEMA

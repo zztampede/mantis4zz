@@ -3,10 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - curl -OL https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
-      - dpkg -i mysql-apt-config*
-      - apt update -y
-      - apt-get -y install mysql-server
+      - curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | /bin/bash
+      - apt-get -y install mariadb-server
       - composer install
   pre_build:
     commands:
