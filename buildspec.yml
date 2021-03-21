@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | /bin/bash
-      - apt-get install mariadb-client
+      - apt-get install mariadb-client -y
   pre_build:
     commands:
       - php -i | grep -i soap
