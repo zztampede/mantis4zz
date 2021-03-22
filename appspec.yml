@@ -4,6 +4,10 @@ files:
   - source: /
     destination: /var/www/html
 hooks:
+  BeforeInstall:
+    - location: beforeins.sh
+      timeout: 60
+      runas: root
   AfterInstall:
     - location: startapache.sh
       timeout: 15
@@ -11,4 +15,8 @@ hooks:
   ApplicationStart:
     - location: admin/install.sh
       timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: stopapache.sh
+      timeout: 15
       runas: root
