@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/mantisbt
+hooks:
+  AfterInstall:
+    - location: startapache.sh
+      timeout: 15
+      runas: root
+  ApplicationStart:
+    - location: admin/install.sh
+      timeout: 300
+      runas: root
