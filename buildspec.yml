@@ -21,8 +21,8 @@ phases:
     commands:
       - mkdir ./artifacts/final
       - unzip ./artifacts/mantis*.zip -d ./artifacts/final/
-      - cd ./artifacts/final/config && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
+      - cd ./artifacts/final/mantisbt-2.26.0-dev/config && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
       - echo Build complete
 artifacts:
   files:
-    - /artifacts/final/**/*
+    - /artifacts/final/mantisbt-2.26.0-dev/**/*
