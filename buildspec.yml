@@ -19,8 +19,10 @@ phases:
       - ./build/buildrelease.py ./artifacts ./
   post_build:
     commands:
-      - mv ./artifacts/*.zip ./artifacts/final.zip
-      - echo Build completed
-  artifacts:
-    files:
-      - /artifacts/final.zip
+      - mkdir ./artifacts/final
+      - unzip ./artifacts/mantis*.zip -d ./artifacts/final/
+      - cd ./artifacts/final/config && curl -O https://mkstorage277353.s3.eu-central-1.amazonaws.com/config_inc.php
+      - echo Build complete
+artifacts:
+  files:
+    - /artifacts/final/**/*
