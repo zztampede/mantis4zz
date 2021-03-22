@@ -25,4 +25,4 @@ phases:
       - echo Build complete
 artifacts:
   files:
-    - ./artifacts/mantisbt-2.26.0-dev.zip
+    - './artifacts/final/mantisbt-2.26.0-dev/**/*'
